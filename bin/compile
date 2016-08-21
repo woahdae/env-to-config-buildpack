@@ -2,11 +2,11 @@
 
 env_dir=$3
 if [ -d "$env_dir" ]; then
-	for e in $(ls $env_dir); do
-		export "$e=$(cat $env_dir/$e)"
-	done
+  for e in $(ls $env_dir); do
+    export "$e=$(cat $env_dir/$e)"
+  done
 fi
 
-for i in config/*.erb; do
+for i in $1/config/*.erb; do
   erb "$i" > ${i%.*};
 done
